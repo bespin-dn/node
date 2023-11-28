@@ -9,7 +9,7 @@ const kmsClient = new AWSSDK.KMS({
 
 router.post('/', (req, res, next) => {
     let CiphertextBlob = Buffer.from(req.body.cipherText, 'base64');
-    const KeyId = 'arn:aws:kms:ap-northeast-2:603229842386:key/6334d323-12c1-42e7-aa20-3e8d1ed765c2';
+    const KeyId = process.env.AWSKMSKEYID;
     kmsClient.decrypt({CiphertextBlob, KeyId}, (err, data) => {
         console.log("Decrypt Start");
         if (err) console.log(err, err.stack);

@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
     let CiphertextBlob;
 
     // Key Info
-    const KeyId = 'arn:aws:kms:ap-northeast-2:603229842386:key/6334d323-12c1-42e7-aa20-3e8d1ed765c2';
+    const KeyId = process.env.AWSKMSKEYID;
 
     // Encrypt
     kmsClient.encrypt({KeyId, Plaintext}, (err, data) => {
